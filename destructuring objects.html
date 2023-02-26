@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+'use strict'; 
+
+//1. Syntax   samea object bu in lefthand side
+//2. names of variables must be same as key names
+//3. naming variables has same syntex as property and value
+
+//uses
+//1. Setting names
+//2. Setting default values
+//3. Nesting
+//4. Mutating variables
+
+const restaurant = {
+    name: 'Classico Italiano',
+    location2: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread','Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+    openingHours: {
+        Thu: {
+            open: 12,
+            close: 22
+        },
+        Fri: {
+            open: 11,
+            close: 23
+        },
+        Sat: {
+            open: 0,
+            close: 24
+        }
+
+    },
+
+    orderDelievery: function({starterIndex =1, mainIndex=1, time='00:00', location='outlet'}){
+        console.log(`Order Received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${location} at ${time}.`);
+    }
+}
+
+const {name, location2, starterMenu, categories}= restaurant;
+console.log(name,location2, starterMenu, categories);
+
+//1.Naming
+const {name: restaurantName, location2: restaurantLocation, starterMenu: breakfast, categories: varities}= restaurant;
+
+console.log(restaurantName, restaurantLocation, breakfast, varities);
+
+//2.Setting default
+const {mainMenu: food = [], menu = []}= restaurant;
+console.log(food, menu)
+
+//3. Nested
+const {Thu}= restaurant.openingHours;
+console.log(Thu);
+
+const {Fri: {open, close}} = restaurant.openingHours;
+console.log(open,close);
+
+const {Sat: {open:n, close:c}} = restaurant.openingHours;
+console.log(n,c)
+
+const {mainMenu: [s,d,f]}= restaurant;
+console.log(s,d,f);
+
+//3. mutating variables
+let a =56;
+let b =67;
+
+const obj = {
+    a: 'rafid',
+    b: 'soumit'
+};
+
+//incase a complex funtion needs a lot of arguments we can pass in a object instead
+//there are 2 advantages to this
+//1. only one object is being passed as parameter
+//2. the order in which they are passed in doesn't matter as it is an object
+//NoTe- the parameter and argumets name need to be the same
+console.log(obj.a);
+({a,b} =  obj);
+console.log(a,b);
+
+restaurant.orderDelievery({
+    time: '22:30',
+    starterIndex: 2,
+    location: 'Gulshan-02',
+    mainIndex: 1,
+});
+
+
+restaurant.orderDelievery({});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>

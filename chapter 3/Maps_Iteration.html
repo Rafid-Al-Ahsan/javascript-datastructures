@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         const restaurant = {
+        name: 'Classico Italiano',
+        location: 'Via Angelo Tavanti 23, Firenze, Italy',
+        categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+        starteMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread','Caprese Salad'],
+        mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+        order: function(starterIndex, mainIndex){
+            return [this.starteMenu[starterIndex], this.mainMenu[mainIndex]];
+        },
+
+        orderDelievery: function({starterIndex =1, mainIndex=0, time = '20:00', address}){
+            console.log(`Order received! ${this.starteMenu[starterIndex]} and 
+            ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+        },
+
+        openingHours: {
+            thu: {
+                open: 12,
+                close: 22 
+            },
+
+            fri: {
+                open: 11,
+                close: 23
+            },
+
+            sat: {
+                open: 0,  //Open 24hours
+                close: 24
+            }
+        },
+
+        orderPasta: function(ing1, ing2, ing3){
+            console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+        },
+
+        orderPizza: function(mainIngredient, ...otherIngredient){
+            console.log(mainIngredient);
+            console.log(otherIngredient);
+        }
+        
+    }
+
+    //There is another way of populating the map without using the set method
+
+    const question = new Map([
+        ['question','What is the best programming language in the world?'],
+        [1,'C'],
+        [2, 'Java'],
+        [3, 'JavaScript'],
+        ['correct',3],
+        [true, 'Correct🏆'],
+        [false, 'Try Again!']
+    ]);
+
+    console.log(question);
+
+    //Object and maps have some similarities, so it is easy to convert object to maps
+    const hoursMap = new Map(Object.entries(restaurant.openingHours));
+    console.log(hoursMap); 
+
+    //Quiz app
+    console.log(question.get('question'));
+    
+    //Maps are also iterables
+    for (const [key, value] of question) {
+        if(typeof key === 'number') console.log(`Answer ${key}: ${value}`)
+    }
+
+    // const answer = Number(prompt('Your answer'));
+    const answer = 3;
+    
+    question.get('correct') === answer; // since this statement is true,so we can directly plug that into map, this is the power of having boolean keys, it's a little completicated at the begining I know
+
+    console.log(question.get(question.get('correct') === answer));
+
+    //Converting map to array
+    console.log([...question]);
+
+    console.log(...question.entries());
+    console.log(...question.keys());
+    console.log(...question.values());
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log('a+very+nice+string'.split('+'));
+        console.log('Rafid Ahsan'.split(' '));
+
+        const [firstName, lastName] = 'Rafid Ahsan'.split(' ');
+        console.log(firstName);
+
+        const newName = ['Mr.' , firstName, lastName.toUpperCase()].join(' ');
+        console.log(newName);
+
+        //Practise Problem
+       const capitalizeName = function(name){
+           const names = name.split(' ');
+           const namesUpper = []
+
+           for(const n of names) {
+                 // can be done in both ways
+                // namesUpper.push( n[0].toUpperCase() + n.slice(1));
+                namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+           }
+           console.log(namesUpper.join(' '));
+       }
+
+       capitalizeName('jessica ann smith davis');
+       capitalizeName('rafid ahsan');
+
+       //Padding
+       const message = 'Go to gate 23!';
+       console.log(message.padStart(20,'+').padEnd(30,'+'));
+       console.log('Raf'.padStart(20,'+').padEnd(30,'+'));
+
+
+       //Real life example
+       const maskCreditCard = function(number){
+          const str = number + '';
+          const last = str.slice(-4);
+          return last.padStart(str.length,'*');
+       }
+
+       console.log(maskCreditCard(567483957));
+       console.log(maskCreditCard('48485949'));
+
+       //Repeat
+       const message2 = 'Bad weather...All Depatures Delayed... ';
+       console.log(message2.repeat(5));
+
+       //just writing a fun function
+       const planesInLine = function(n){
+          console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+       }
+
+       planesInLine(5);
+    </script>
+
+</body>
+</html>

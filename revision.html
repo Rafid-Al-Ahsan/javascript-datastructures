@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [2,3,4];
+        const [a,b,c] = arr;
+        console.log(a,b,c)
+
+        const restaurant = {
+            name: 'Classico Italiano',
+            location: 'Via Angelo Tavanti 23, Firenze Italy',
+            categories: ['Italian', 'Pizzeria','Vegetarian', 'Organic'],
+            starterMenu: ['Focaccia','Bruschetta','Garlic Bread', 'Caprese Salad'],
+            mainMenu: ['Pizza','Pasta','Risotto'],
+
+            orderPizza: function(starterIndex, mainIndex){
+                return [this.starterMenu[starterIndex],this.mainMenu[mainIndex]];
+            },
+
+            openingHours: {
+                thu: {
+                    open: 12,
+                    close: 22
+                },
+                fri: {
+                    open: 11,
+                    close: 23
+                },
+                sat: {
+                    open: 0,
+                    close: 24
+                }
+
+            },
+
+            orderDelievery: function({mainIndex = 1,starterIndex = 0,time='20:00',address}){
+              console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delieverd to ${address} at ${time}`);
+            }
+
+           
+            
+        };
+
+
+        restaurant.orderDelievery({
+            time: '22:30',
+            address: 'Via Del Sole, 21',
+            mainIndex: 2,
+            starterIndex: 2
+        });
+
+        // const [first, ,second] = restaurant.categories;
+        // console.log(first,second)
+
+        // let[main,secondary] = restaurant.categories;
+        // console.log(main,secondary);
+
+        // [main,secondary] = [secondary,main];
+        // console.log(main,secondary);
+
+        // const [starterMenu,mainCourse] = restaurant.orderPizza(2,0);
+        // console.log(starterMenu,mainCourse);
+
+        // const nested = [2,4,[5,6]];
+        // // const [i, ,j] = nested;
+        // const [i,j,[k,l]] = nested;
+        // console.log(i,j,k,l);
+
+        // const [p=0, q=0, r=0] = [6,8];
+        // console.log(p,q,r);
+
+        const {name, openingHours, categories} = restaurant;
+        console.log(name, openingHours, categories);
+
+        const {name: restaurantName, openingHours: hours, categories: tags} = restaurant;
+        console.log(restaurantName, hours, tags);
+
+        const {menu = [], starterMenu: starter = []} =restaurant;
+        console.log(menu, starter);
+
+        //Mutating Variables
+        let g =78;
+        let h =90;
+        const obj = {g:56,h:79};
+        ({g,h} = obj);
+        console.log(g,h);
+
+        const {fri:{open:o,close:cl}}= openingHours;
+        console.log(o,c);
+
+    </script>
+</body>
+</html>

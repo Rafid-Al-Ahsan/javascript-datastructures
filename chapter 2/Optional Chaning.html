@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const restaurant = {
+        name: 'Classico Italiano',
+        location: 'Via Angelo Tavanti 23, Firenze, Italy',
+        categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+        starteMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread','Caprese Salad'],
+        mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+        order: function(starterIndex, mainIndex){
+            return [this.starteMenu[starterIndex], this.mainMenu[mainIndex]];
+        },
+
+        orderDelievery: function({starterIndex =1, mainIndex=0, time = '20:00', address}){
+            console.log(`Order received! ${this.starteMenu[starterIndex]} and 
+            ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+        },
+
+        openingHours: {
+            thu: {
+                open: 12,
+                close: 22 
+            },
+
+            fri: {
+                open: 11,
+                close: 23
+            },
+
+            sat: {
+                open: 0,  //Open 24hours
+                close: 24
+            }
+        },
+
+        orderPasta: function(ing1, ing2, ing3){
+            console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+        },
+
+        orderPizza: function(mainIngredient, ...otherIngredient){
+            console.log(mainIngredient);
+            console.log(otherIngredient);
+        }
+        
+    };
+
+    if(restaurant.openingHours && restaurant.openingHours.mon) console.log(restaurant.openingHours.mon);
+
+    //Optinal Chaning(this uses the nullish concect meaning)
+    //1. A property exits until it is undefined or null
+    //2. Even if it is zero or empty string
+    console.log(restaurant.openingHours?.mon?.open);
+
+    //Real World Example
+    const days = ['mon','tue','wed','thu','fri','sat','sun'];
+
+    for(const day of days){
+        console.log(day);
+        const open = restaurant.openingHours[day]?.open ?? 'closed';
+        console.log(`On ${day}, we open at ${open}`);
+    }
+
+    //Optiohnal Chaning also works on methods
+    console.log(restaurant.order?.(0,1) ?? 'Method does not exits');
+    console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exits');
+
+    //Also works on arrays
+    const users = [
+        {name: 'rafid', email: 'rafidahsan78@gmail.com'}
+    ];
+
+    console.log(users[0]?.name ?? 'User array empty');
+    
+    </script>
+</body>   
+</html> 

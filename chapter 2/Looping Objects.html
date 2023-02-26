@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                const restaurant = {
+        name: 'Classico Italiano',
+        location: 'Via Angelo Tavanti 23, Firenze, Italy',
+        categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+        starteMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread','Caprese Salad'],
+        mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+        order: function(starterIndex, mainIndex){
+            return [this.starteMenu[starterIndex], this.mainMenu[mainIndex]];
+        },
+
+        orderDelievery: function({starterIndex =1, mainIndex=0, time = '20:00', address}){
+            console.log(`Order received! ${this.starteMenu[starterIndex]} and 
+            ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+        },
+
+        openingHours: {
+            thu: {
+                open: 12,
+                close: 22 
+            },
+
+            fri: {
+                open: 11,
+                close: 23
+            },
+
+            sat: {
+                open: 0,  //Open 24hours
+                close: 24
+            }
+        },
+
+        orderPasta: function(ing1, ing2, ing3){
+            console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+        },
+
+        orderPizza: function(mainIngredient, ...otherIngredient){
+            console.log(mainIngredient);
+            console.log(otherIngredient);
+        }
+        
+    };
+
+
+        //We can loop over object property name, property values or both
+        //Property names are also called keys
+        
+        for (const day of Object.keys(restaurant.openingHours)){
+            console.log(day);
+        }
+
+        for(const day of Object.keys(restaurant)) console.log(day);
+
+        const properties = Object.keys(restaurant);
+        console.log(properties);
+        console.log(properties.length);
+        console.log(`We are open on ${Object.keys(restaurant.openingHours).length} days`); 
+
+
+        //Looping over values
+        const values = Object.values(restaurant.openingHours);
+        console.log(values);
+
+        //Looping over entire object
+        const entries = Object.entries(restaurant.openingHours);
+        console.log(entries);
+
+        for(const ent of entries){
+            console.log(ent);
+        }
+
+        for(const [key, value] of entries) console.log(key , value);
+
+        for(const [key,{open,close}] of entries) console.log(`On ${key} we open at ${open} and close at ${close}`);
+    </script>
+</body>
+</html>

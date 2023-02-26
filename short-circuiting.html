@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //They can use any data type
+        //they can return data type
+        //short-circuiting
+        // console.log(3 || 'Rafid'); 
+        // console.log('' || 'Rafid');
+        // console.log(true || 0);
+        // console.log(undefined || null);
+
+        // console.log(''|| undefined || 0 || 27 || null);
+        
+        const restaurant = {
+        name: 'Classico Italiano',
+        location: 'Via Angelo Tavanti 23, Firenze, Italy',
+        categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+        starteMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread','Caprese Salad'],
+        mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+        order: function(starterIndex, mainIndex){
+            return [this.starteMenu[starterIndex], this.mainMenu[mainIndex]];
+        },
+
+        orderDelievery: function({starterIndex =1, mainIndex=0, time = '20:00', address}){
+            console.log(`Order received! ${this.starteMenu[starterIndex]} and 
+            ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+        },
+
+        openingHours: {
+            thu: {
+                open: 12,
+                close: 22 
+            },
+
+            fri: {
+                open: 11,
+                close: 23
+            },
+
+            sat: {
+                open: 0,  //Open 24hours
+                close: 24
+            }
+        },
+
+        orderPasta: function(ing1, ing2, ing3){
+            console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+        },
+
+        orderPizza: function(mainIngredient, ...otherIngredient){
+            console.log(mainIngredient);
+            console.log(otherIngredient);
+        }
+        
+    }
+
+    //using or operator in the place of conditional operator
+    restaurant.numGuest =23
+    const party = restaurant.numGuest? 'guestPresent': ':(';
+    console.log(party);
+
+    console.log(restaurant.numGuest || ':(');
+    
+    console.log('---- AND ----')
+
+    //AND operator short-circuiting
+    console.log(0 && 'Rafid');
+    console.log(7 && 'Rafid');
+
+    console.log('Hello' && 23 && null && 'jonas');
+
+    //using and operator in the place of conditional operator
+    if(restaurant.orderPizza){
+        restaurant.orderPizza('mushrooms','spinach');
+    }
+
+    restaurant.orderPizza && restaurant.orderPizza('mushroom','spinach');
+
+    console.log(restaurant.newPizza && restaurant.newPizza);
+
+    </script>
+</body>
+</html>

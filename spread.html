@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+'use strict';
+
+const restaurant = {
+    name: 'Classico Italiano',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starteMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread','Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+    orderPasta: function(ing1, ing2, ing3){
+        console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+    },
+};
+
+//1. Spread operator is used to unpack array
+//2. The difference between destructuring and spread is spread takes all the elements of an array and also spread doesn't create new variables
+//3. Spread operator only works on the remaining end elements
+//4. Spread operator can also be used in strings
+
+
+const fruits = ['apples', 'oranges', 'grapes'];
+
+const moreFruits = ['pineapple', 'blackberry', ...fruits];
+console.log(moreFruits);
+console.log(...moreFruits);
+
+const flowers = ['Red rose', 'Sunflower', 'Waterlilly'];
+
+//use of spread 
+//1. to copy array
+//2. to join arrays
+//3.strings
+//4. passing spread operators in methods
+
+//1.copy array
+const copyFruits = [...fruits];
+console.log(copyFruits);
+
+//2.join arrays
+const fruitsFlowers = [...fruits, ...flowers];
+console.log(fruitsFlowers); 
+
+//strings
+const name = 'rafid';
+console.log(...name);
+
+const names = [...name,  '\'s'];
+console.log(names);
+console.log(...names);
+
+const ingredients = [
+   prompt('Let\'s make pasta! Ingredient 1?'),
+   prompt('Ingredient 2?'),
+   prompt('Ingredient 3'),
+];
+
+//passing spread operators in methods
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+//rather then the code above we can do much better using spread
+restaurant.orderPasta(...ingredients);
+
+const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'};
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy);
+console.log(restaurant.name); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>

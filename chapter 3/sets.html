@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Set is just a collection of unique values
+        //Set is an iterable & you and put any types of iterables inside sets
+        //there is no way of getting data out of a set because in set order doesn't matter and all values are unique,all we need to know whether a certain value is in the set or not
+        const ordersSet = new Set([
+            'Pasta', 
+            'Pizza', 
+            "Pizza", 
+            'Risotto',
+            'Pasta'
+        ]);
+        console.log(ordersSet);
+
+        //remember string is an iterable,so we can write
+       console.log(new Set('Rafid'));
+
+       //methods of sets
+       //remember javascript is casesensitive
+       console.log(ordersSet.size);
+       console.log(ordersSet.has('Pizza'));
+       console.log(ordersSet.has('Bread'));
+       ordersSet.add('Garlic Bread');
+       ordersSet.add('Garlic Bread');
+       ordersSet.delete('Risotto');
+       console.log(ordersSet);
+
+     //ordersSet.clear;//deletes all the elements in a set
+       
+     //since set is an iterable we can loop over them
+     for(const order of ordersSet) console.log(order);
+
+
+     //Practical use case of sets
+     //Coverting from array to sets to remove duplicate data
+     const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef'];
+     const positions = new Set(staff);
+     console.log(positions);
+
+     //Remember the spread operator works on all iterables
+     //Convertion from a set to a array is wasy as they are both iterables
+     const positionsArray = [...positions];
+     console.log(positionsArray);
+
+    //Counting how many differnt letters are there in a name
+    console.log(new Set('RafidAlAhsan').size);
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+'use strict';
+
+//1.Destructuring is unpacking
+//2.Destructuring does not effect the actual data structure - arrays
+//3.Destructuring has the same syntax as array but it is written on the left
+
+//use cases
+//1.Swiping values
+//2.Nested destructuring
+//3.
+
+const arry = ['rafid', 27, true];
+console.log(arry[0]);
+
+const a = arry[0];
+console.log(a);
+
+const [b,c,d] = arry;
+console.log(b,c,d);
+
+const restaurant = {
+    name: 'Classico Italiano',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starteMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread','Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+    order: function(starteIndex, mainIndex){
+        return [this.starteMenu[starteIndex], this.mainMenu[mainIndex]];
+    }
+};
+
+
+const [firstItem, secondItem] = restaurant.starteMenu;
+console.log(firstItem, secondItem);
+
+let [first, , third] = restaurant.mainMenu;
+console.log(first, third);
+
+// const temp = first;
+// first = third;
+// third = temp;
+
+//1.
+[first, third] = [third, first];
+console.log(first,third);
+
+//2.
+const soumit= ['Assaduman', 27, ['rafid', 'sk'] ];
+const [name, ,friends] = soumit;
+console.log(name, friends);
+
+const [,,[firstFriend,secondFriend]] = soumit;
+console.log(firstFriend, secondFriend);
+
+//3.Default value
+const [e=1,f=1,g=1,h=1,i='Lorum'] = restaurant.mainMenu;
+console.log(e,f,g,h,i);
+
+
+console.log(restaurant.order(3,1));
+const [order1, order2] = restaurant.order(2,2);
+console.log(order1, order2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

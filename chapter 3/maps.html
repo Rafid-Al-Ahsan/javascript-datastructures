@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Life is a waste of time</h1>
+     <script>
+        // The main difference between maps and objects, in maps the keys can have any type whereas, in obkets the keys are aloways strings
+
+        //the easiest way to create a map is to create an empty map
+        const rest = new Map();
+        rest.set('name','Classico Italiano');
+        rest.set(1 , 'Firenze Italy');
+        // Call the set method does actualy return the new set
+        console.log(rest.set(2, 'Liston Portugal'));
+
+
+        rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']) //this return the new set so basic we can use the set method on it again
+        .set('open', 11)
+        .set('close', 23)
+        .set(true, 'We are open :D')
+        .set(false, 'We are closed :(');
+
+        //Inorder to read data from a map we use the get method
+        //becareful while calling data as data of the key matters
+        console.log(rest.get('name'));
+        console.log(rest.get(true));
+        console.log(rest.get(1));
+
+        const currentTime = 21;
+        console.log(rest.get(currentTime > rest.get('open') && currentTime < rest.get('close')));
+
+        console.log(rest.has('categories'));
+        rest.delete(2);
+        console.log(rest);
+        console.log(rest.size);
+        rest.clear();//removes all the element from map
+
+
+        //we can also set arrays & objects as keys in maps
+        //we shouldn't use it like this because when we try to call the property it does not work
+        console.log(rest.set([1,2], 'Test'));
+        console.log(rest.get([1,2]));
+       
+        //use it like this instead
+        const arry = [1,2];
+        console.log(rest.set(arry,'Test'));
+        console.log(rest.get(arry));
+
+        //dump elements are special type of object
+        rest.set(document.querySelector('h1'), 'Heading');
+     </script>
+</body>
+</html>

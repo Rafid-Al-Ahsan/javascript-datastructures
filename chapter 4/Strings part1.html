@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Just like arrays we can get the character of a string at a certaine position
+        const airline = 'TAP Air Portual';
+        const plane = 'A320';
+        console.log(airline[0]);
+        console.log(airline[3]);
+        // The same can be done directly on a string
+        console.log('B737'[0]);
+
+        //We can also read the length property of strings
+        console.log(airline.length);
+        
+        //Strings also have methods
+        console.log(airline.indexOf('r'));
+        console.log(airline.lastIndexOf('r'));
+        console.log(airline.indexOf('Portual'));
+
+        //Remember it is impossible to mutate string, they are immutable
+        console.log(airline.slice(4));
+        //the length of the string is always gonna be start value(4) - end value(7)
+        //the end value is not included in the string
+        console.log(airline.slice(4,7))
+
+        console.log(airline.slice(0,airline.indexOf(' ')));
+        //Since the space is also gets include in lastIndexof, so we added plus 1
+        console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+        console.log(airline.slice(-2));
+        console.log(airline.slice(1,-1));
+
+        //Lets practice them in real life situation
+        const checkMiddleSeat = function(seat){
+           //B and E are middle seats
+           const s = seat.slice(-1);
+           s === 'B' || s === 'E'? console.log(`You got the middle seat😒`) : console.log('You got lucky😎');
+
+        }
+
+        checkMiddleSeat('11B');
+        checkMiddleSeat('23C');
+        checkMiddleSeat('3E');
+
+        //Remember Strings are just primitives
+        //Whenever we call a method on a string, javascript will automatically convert the string primitive to a string object.this method is called boxing
+        console.log(new String('jonas'));
+        console.log(typeof new String('jonas'));
+    </script>
+    
+</body>
+</html>
